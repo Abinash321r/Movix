@@ -1,0 +1,38 @@
+#footer{
+    background-color: #7644ff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#footerlogo{
+    margin-top: 10px;
+    height: 50px;
+    width: 300px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   gap: 5px;
+}
+#footerlogo>img{
+    height: 100%;
+    width: 50px;
+    object-fit: contain;
+    object-position: center;
+}
+#wrapper{
+    height: 90px;
+    display: flex;
+    background-color: #7644ff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#contact{
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+}

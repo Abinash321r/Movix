@@ -1,0 +1,38 @@
+#textoverflowcontainer{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+#viewall{
+    max-height: 112px;
+display: -webkit-box;
+-webkit-box-orient: vertical;
+-webkit-line-clamp: initial;
+overflow: auto;
+line-height: 1.2;
+text-align: justify;
+ /*overflow: hidden;*/
+
+}
+#viewless{
+    max-height: 112px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+    text-align: justify;
+}
+#view{
+    width: 70px;
+    background-color: #7644ff;
+    text-align: center;
+    border-radius: 2px;
+    padding: 2px;
+    transition: transform 0.11s linear;
+}
+#view:hover{
+    cursor: pointer;
+    transform: scale(0.97);
+    background-color: #723def;
+}

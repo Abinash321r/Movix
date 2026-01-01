@@ -1,0 +1,113 @@
+nav{
+    display:grid;
+    grid-template-columns: minmax(130px,1fr) minmax(300px,3fr) 1fr 1fr 1fr 1fr 1fr;
+    height: 50px;
+    gap: 5px;
+    grid-template-rows: 50px;
+    background-color: #7644ff;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    justify-items: center;
+}
+#hide{
+    display: none;
+}
+nav>#logo{
+    height: 90%;
+    width: 100%;
+ 
+}
+nav>div{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+#searchicons{
+    width: 40px;
+    height: 40px;
+    justify-self: end;
+}
+
+#searchicons:hover{
+    cursor: pointer;
+    cursor: pointer;
+    background-color: #723def;
+    border-radius: 50%;
+}
+nav>div>input{
+    width: 90%;
+    height: 50%;
+    border: 1px solid;
+    border-radius: 19px;
+    padding-left: 20px;
+    padding-right: 60px;
+    color: white;
+    background-color: #7644ff;
+}
+
+nav>div>input:focus{
+    outline: green;
+}
+nav>div>input::placeholder{
+    text-align: center;
+    color: white;
+}
+
+
+nav>div>img{
+
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+    object-position: center;
+}
+#menu{
+    height: 40px;
+    width: 40px;
+}
+#menu:hover{
+    cursor: pointer;
+    background-color: #723def;
+    border-radius: 50%;
+}
+#dropdown{
+    z-index: 1;
+    position: fixed;
+    width: 120px;
+    top: 50px;
+    right: 11px;
+    background-color: #7644ff;
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: center;
+    padding: 10px;
+}
+.nav-profile {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  cursor: pointer;
+  object-fit: cover;
+  border: 2px solid #f8f8f8;
+}
+
+
+@media screen and (max-width:850px) {
+    nav{
+        grid-template-columns: minmax(98px,1fr) minmax(200px,3fr) 1fr ;
+        gap:2px;
+    }
+    h2{
+        font-size: medium;
+    }
+    nav>div>img {
+        height: 50%;
+        width: 30%;
+    }
+}

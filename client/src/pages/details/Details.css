@@ -1,0 +1,20 @@
+#detailspage{
+    height: fit-content;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+#details{
+ margin-top: 10px;
+ margin-bottom: 10px;
+width: 100%;
+display: flex;
+gap: 10px;
+}
+#detailsleft{
+    flex: 1;
+    height: fit-content;
+}
+#detailsright{
+    width: 300px;
+}

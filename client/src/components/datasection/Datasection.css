@@ -1,0 +1,71 @@
+
+#datasection{
+    width: 300px;
+    border: 1.5px solid #a9a9a973;
+    height: fit-content;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 300px 50px 1fr repeat(7,33px) 1fr;
+    grid-template-areas: 
+    'detailimage'
+    'detailtitle'
+    'detailoverview'
+    'detailtype'
+    'detailcountry'
+    'detailgenres'
+    'detailreleasedate'
+    'detailduration'
+    'detailproducers'
+    'detaildirectors'
+    'detailratings'
+    ;
+    align-items: center;
+    }
+    #datasection>div:not(#detailimage){
+        padding: 10px;
+        }
+        #detailimage{
+        grid-area: detailimage;
+        height: 100%;
+        }    
+        #detailtitle  {
+        grid-area: detailtitle;
+        
+        }  
+        #detailoverview {
+        grid-area: detailoverview;
+        
+        }
+        #detailtype {
+        grid-area: detailtype;
+        }
+        #detailcountry  {
+        grid-area:detailcountry ;
+        } 
+        #detailgenres{
+            grid-area: detailgenres;
+            display: flex;
+            }
+        #detailgenres>span  {
+        display: flex;
+        gap:5px;
+        }
+        #detailreleasedate{
+        grid-area:detailreleasedate ;
+        }
+        #detailduration {
+        grid-area: detailduration;
+        }
+        #detailproducers {
+        grid-area:detailproducers ;
+        }
+        #detaildirectors {
+        grid-area:detaildirectors ;
+        }
+        #detailratings{
+        grid-area: detailratings;
+        align-self: baseline;
+        }  
+        span{
+            color:#6b69b9;
+        }

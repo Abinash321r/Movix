@@ -1,0 +1,14 @@
+/*.lazy-load-image-background.blur.lazy-load-image-loaded {
+    filter: blur(0);
+    transition: filter .3s;
+    width: 100%;
+    height: 100%;
+}
+.lazy-load-image-background.blur.lazy-load-image-loaded > img {
+    opacity: 1;
+    transition: opacity .3s;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position:center;
+}*/
