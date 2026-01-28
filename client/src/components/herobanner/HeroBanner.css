@@ -1,8 +1,11 @@
 #herobannercontainer{
     display: flex;
-   /* overflow-x: scroll;*/
     width: 100%;
+    scroll-snap-type: x mandatory; /*  key line */
+    scroll-behavior: smooth;       /* optional but nice */
 }
+
+
 #herobanner{
     width: 100%;
     height: 300px;
@@ -18,8 +21,9 @@
     'img watchnow'
     ;
     column-gap: 10px;
-
+scroll-snap-align: start; /* 👈 snap here */
 }
+
 
 
 

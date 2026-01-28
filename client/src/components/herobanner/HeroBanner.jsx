@@ -9,48 +9,22 @@ import LazyLoadingImage from '../../lazyloadingimage/LazyLoadingImage';
 import HeroBannerLoadingSkeleton from '../loadingskeleton/HeroBannerLoadingSkeleton';
 import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
-import { useInView } from 'react-intersection-observer';
+
 function HeroBanner() {
     const[state,setState]=useState([]);
-    const [intervalId, setIntervalId] = useState(null);
-    const[count,setCount]=useState(0);
+
     const[page,setPage]=useState(Math.floor(Math.random()*500)==0?1:Math.floor(Math.random()*500));
     const navigate=useNavigate();
-    const ref=useRef();
-    const [reference, inView] = useInView()
     const {data,loading,error}=useFetch(`/trending/all/week?page=${page}`);
     const url = useSelector((state) => state.home.url);
-    const setref=(node)=>{
-    ref.current=node;
-    reference(node);
-    }
-    const startinterval=()=>{/*
-      clearInterval(intervalId);
-      const interval=setInterval(()=>{
-         setCount((prevCount)=>prevCount+1)
-   },10000)
-   setIntervalId(interval);
-   */
-  }
+    const containerRef = useRef(null);
+    const timeoutRef = useRef(null);
         
   const handleclick=(media_type,id)=>{
  navigate(`/details/${media_type}/${id}`)
  }
 
- const handleleft=()=>{
-  if(count==0){
-    setCount(0)
-  }
-  else{
-    setCount(count-1)
-  }
-   startinterval();
- }
-
- const handleright=()=>{
-  setCount(count+1)
-    startinterval();
- }
+ 
 
     useEffect(()=>{
         if(data && url && data?.length!==0){
@@ -59,53 +33,46 @@ function HeroBanner() {
         }
       },[data])
 
-     useEffect(()=>{ 
-      startinterval();
-       return () =>{
-         clearInterval(intervalId);
-        }
-       },[])
+  
+  const scrollLeft = () => {
+  if (!containerRef.current) return;
+  containerRef.current.scrollBy({
+    left: containerRef.current.clientWidth,
+    behavior: "smooth",
+  });
+};
+ const scrollRight = () => {
+  if (!containerRef.current) return;
+  containerRef.current.scrollBy({
+    left: -containerRef.current.clientWidth,
+    behavior: "smooth",
+  });
+};
 
-      useEffect(() => {
-        const handleVisibilityChange = () => {
-          if (document.visibilityState === 'visible'&&inView==true) {
-         
-            startinterval();
-          } else {
-         
-            clearInterval(intervalId);
-          }
-        };
-        document.addEventListener('visibilitychange', handleVisibilityChange);
-        return () => {
-          document.removeEventListener('visibilitychange', handleVisibilityChange);
-          clearInterval(intervalId);
-        };
-      }, [intervalId]);
-
-      useEffect(()=>{
-    
-        if(inView==false){
-        clearInterval(intervalId)
-
-        }
-        else{
-          startinterval();
-        }
-       },[inView])
 
        useEffect(()=>{
-        const container=ref?.current;
-          if(ref?.current){
-            container.scrollTo({
-              left: container?.clientWidth*count,
-              behavior: 'smooth',  // Add smooth scrolling behavior
-            });
-            }
-            if(container?.scrollWidth-(container?.scrollLeft+container?.clientWidth)<2*container?.clientWidth){
-              setPage(Math.floor(Math.random()*500)==0?1:Math.floor(Math.random()*500))
-            }  
-        },[count])
+  // start auto-scroll after 10s
+  timeoutRef.current = setTimeout(() => {
+    console.log('10s timeout called')
+    scrollLeft();
+  }, 10000);
+
+  const container = containerRef?.current;
+  const onScroll = () => {
+    clearTimeout(timeoutRef.current);
+    timeoutRef.current = setTimeout(() => {
+      console.log('10s timeout called from scroll')
+      scrollLeft();
+    }, 10000);
+  };
+  container?.addEventListener("scroll", onScroll, { passive: true });
+
+
+  return () => {
+    container?.removeEventListener("scroll", onScroll);
+    clearTimeout(timeoutRef.current);
+  };
+        },[[state.length]])
 
     
     if(error){
@@ -117,7 +84,7 @@ function HeroBanner() {
   return (
     //style={{overflow:'hidden'}} 
  
-    <div id='herobannercontainer' ref={setref}  style={{overflow:'hidden'}}   >
+    <div id='herobannercontainer'   ref={containerRef} style={{ overflowX: 'auto', overflowY: 'hidden' }} >
     {state?.map((state,index)=>{
       return(
     <div id='herobanner'    key={index}  >
@@ -139,8 +106,8 @@ function HeroBanner() {
         <div id='watchnow'>
           <div id='watchnowtext'  onClick={()=>handleclick(state?.media_type,state?.id)}>watchnow</div>
           <div id='watchnowarrow'>
-            <div onClick={()=>handleleft()}> <KeyboardArrowLeftIcon/></div>
-            <div onClick={()=>handleright()}> <KeyboardArrowRightIcon/></div>
+            <div onClick={()=>scrollRight()}> <KeyboardArrowLeftIcon/></div>
+            <div onClick={()=>scrollLeft()}> <KeyboardArrowRightIcon/></div>
           </div>
        </div>
         </>
