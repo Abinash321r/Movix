@@ -5,7 +5,9 @@ server/node_modules/
 
 # Ignore build outputs
 client/build/
+client/dist/
 server/build/
+
 
 # Ignore cache
 **/.cache/
