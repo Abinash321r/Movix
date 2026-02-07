@@ -4,6 +4,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { getProfileUrl, getLogout } from "../../store/homeslice";
 
 function Signup_login({ show, onClose }) {
+
+  const SERVER_URL=import.meta.env.VITE_APP_SERVER_URL
   const dispatch = useDispatch();
   const profileUrl = useSelector((state) => state.home.profile_url);
 
@@ -29,10 +31,9 @@ function Signup_login({ show, onClose }) {
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
-
   const handleLogout = async () => {
     try {
-      const res = await fetch("http://localhost:5000/logout", {
+      const res = await fetch(`${SERVER_URL}/logout`, {
         method: "POST",
         credentials: "include",
       });
@@ -58,7 +59,7 @@ function Signup_login({ show, onClose }) {
       let res;
 
       if (isLogin) {
-        res = await fetch("http://localhost:5000/logindata", {
+        res = await fetch(`${SERVER_URL}/logindata`, {
           method: "POST",
           credentials: "include",
           headers: { "Content-Type": "application/json" },
@@ -71,7 +72,7 @@ function Signup_login({ show, onClose }) {
         data.append("password", formData.password);
         data.append("profilePic", profilePic);
 
-        res = await fetch("http://localhost:5000/signupdata", {
+        res = await fetch(`${SERVER_URL}/signupdata`, {
           method: "POST",
           credentials: "include",
           body: data,
