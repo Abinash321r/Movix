@@ -30,7 +30,7 @@ export default function ProtectedRoute({ children }) {
     checkAuth();
   }, []);
 
-  if (auth === null) return <p>Checking Auth...</p>;
+if (auth === null) return <p>Checking Auth...</p>;
 
   return auth ? children : <Navigate to="/" replace />;
 }

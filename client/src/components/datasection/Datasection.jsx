@@ -41,7 +41,7 @@ function Datasection() {
     <div id='detailtype'       >Type: <span>{media_type}</span></div>
     <div id='detailcountry'    >Country: <span>{state?.production_countries?.[0]?.name}</span></div>
     <div id='detailgenres'     >Genres:<span> {
-      state?.genres?.map((genre,index)=>{
+      state?.genres?.slice(0, 3).map((genre,index)=>{
         return(
           <div key={index} id='genres'>{genre?.name}{(state?.genres?.length!==index+1)&&(<>,</>)}</div>
         )

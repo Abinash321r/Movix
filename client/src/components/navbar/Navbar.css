@@ -96,6 +96,13 @@ nav>div>img{
   object-fit: cover;
   border: 2px solid #f8f8f8;
 }
+#logo:hover{
+    cursor: pointer;
+
+}
+#ongoing:hover{
+cursor: pointer;
+}
 
 
 @media screen and (max-width:850px) {

@@ -131,3 +131,14 @@ transform: scale(0.96);
     text-overflow: ellipsis;
 }
 }
+
+@media screen and (max-width: 850px) {
+    #titleofherobanner>h3{
+        display: -webkit-box;
+        overflow: hidden;
+        -webkit-line-clamp:1;
+        -webkit-box-orient: vertical;
+        text-overflow: ellipsis;
+    }
+   
+}

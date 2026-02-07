@@ -35,7 +35,7 @@ function Navbar() {
   return (
     <>
       <nav>
-        <div id='logo'>
+        <div id='logo'  onClick={() => navigate("/")}>
           <img src={logo} alt="logo"/>
           <h2>MoVIX</h2>
         </div>
@@ -75,7 +75,7 @@ function Navbar() {
           <>
             <div>Genres</div>
             <div>Upcoming</div>
-            <div onClick={() => navigate("/ongoing")}>Ongoing</div>
+            <div id='ongoing' onClick={() => navigate("/ongoing")}>Ongoing</div>
             <div>Top Rated</div>
 
             {/* Login/Signup Button */}

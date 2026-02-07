@@ -93,15 +93,15 @@ function HeroBanner() {
         <LazyLoadingImage state={url+state?.backdrop_path}/>
         </div>
         <div id='titleofherobanner'>
-          <h3>{state?.title}{state?.name}</h3>
+          {(state?.title||state?.name)?<h3>{state?.title}{state?.name}</h3>:<h3>Not Available</h3>}
           </div>
         <div id='ratings'>
-          <div>{state?.vote_average?.toFixed(2)}</div>
-          <div>{state?.media_type}</div>
-          <div>{state?.release_date}{state?.first_air_date}</div>
+          {(state?.vote_average>0)&&(<div>{state?.vote_average?.toFixed(2)}</div>)}
+          {(state?.media_type)&&(<div>{state?.media_type}</div>)}
+          {(state?.release_date || state?.first_air_date)&&(<div>{(state?.release_date || state?.first_air_date)?.split("-")[0]}</div>)}
         </div>
         <div id='description'>
-          <p id='paragraph'>{state?.overview}</p>
+          {(state?.overview)?(<p id='paragraph'>{state?.overview}</p>):(<p id='paragraph'>Description not avilable</p>)}
           </div>
         <div id='watchnow'>
           <div id='watchnowtext'  onClick={()=>handleclick(state?.media_type,state?.id)}>watchnow</div>

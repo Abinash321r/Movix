@@ -5,6 +5,8 @@
     grid-template-rows: auto;
     background-color: #26282f;
     row-gap: 10px;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
 }
 #latest>div>h2{
     text-align: center;
@@ -24,6 +26,7 @@
     align-items: center;
     border: 1px solid #a9a9a973;
     transition: 0.11s linear;
+     scroll-snap-align: start;
 }
 #container:hover{
     cursor: pointer;
