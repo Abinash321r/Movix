@@ -3,12 +3,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { getProfileUrl, getLogout } from "../../store/homeslice";
 
 export default function ProtectedRoute({ children }) {
+ const SERVER_URL=import.meta.env.VITE_APP_SERVER_URL
  const dispatch = useDispatch();
  
   useEffect(() => {
     const checkAuth = async () => {
       try {
-        const res = await fetch("http://localhost:5000/checkcookie", {
+        const res = await fetch(`${SERVER_URL}/checkcookie`, {
           method: "GET",
           credentials: "include",
         });

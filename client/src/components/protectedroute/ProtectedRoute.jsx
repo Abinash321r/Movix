@@ -3,11 +3,11 @@ import { Navigate } from "react-router-dom";
 
 export default function ProtectedRoute({ children }) {
   const [auth, setAuth] = useState(null);
-
+ const SERVER_URL=import.meta.env.VITE_APP_SERVER_URL
   useEffect(() => {
     const checkAuth = async () => {
       try {
-        const res = await fetch("http://localhost:5000/checkcookie", {
+        const res = await fetch(`${SERVER_URL}/checkcookie`, {
           method: "GET",
           credentials: "include",
         });
