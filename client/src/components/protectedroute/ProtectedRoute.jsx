@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Navigate } from "react-router-dom";
+import Loader from "../loader/Loader";
 
 export default function ProtectedRoute({ children }) {
   const [auth, setAuth] = useState(null);
@@ -30,7 +31,7 @@ export default function ProtectedRoute({ children }) {
     checkAuth();
   }, []);
 
-if (auth === null) return <p>Checking Auth...</p>;
+if (auth === null) return <Loader/>;
 
   return auth ? children : <Navigate to="/" replace />;
 }
