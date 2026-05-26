@@ -15,6 +15,7 @@ import { useRef } from 'react';
 import ProtectedRoute from "./components/protectedroute/ProtectedRoute.jsx";
 import ProtectedRoute4userinfo from './components/protectedroute/ProtectedRoute4userinfo.jsx'
 import Ongoing from './pages/ongoing/Ongoing.jsx'
+import Swal from "sweetalert2";
 
 function App() {
   const {configurl}=useConfig();
@@ -32,6 +33,7 @@ useEffect(()=>{
 },[configurl])
 
 useEffect(()=>{
+  
   if(scrolltop){
     const container=ref.current;
     console.log('container',container)
@@ -46,8 +48,18 @@ useEffect(()=>{
 },[scrolltop])
 
 useEffect(()=>{
-const container=ref.current;
 
+const container=ref.current; 
+const alreadyShown = sessionStorage.getItem("cookies_popup_shown"); 
+  if (!alreadyShown) {
+  Swal.fire({
+  icon: "info",
+  title: "Cookies Required",
+  text: "Please check third-party cookies to access all features.",
+  confirmButtonText: "OK"
+})
+sessionStorage.setItem("cookies_popup_shown", "true");
+};
   const handlescroll=()=>{
     if(container){
       const {scrollHeight,scrollTop,clientHeight}=container
@@ -62,8 +74,11 @@ const container=ref.current;
         dispatch(getScrollState(false));
       }
     }  
+
+
   }
   container.addEventListener('scroll',handlescroll);
+
   return()=>{
 container.removeEventListener('scroll',handlescroll);
   }

@@ -10,9 +10,9 @@ function Signup_login({ show, onClose }) {
   const profileUrl = useSelector((state) => state.home.profile_url);
 
   const [formData, setFormData] = useState({
-    username: "",
-    email: "",
-    password: "",
+    username: "Abinash",
+    email: "xyz@gmail.com",
+    password: "pass1!",
   });
 
   const [profilePic, setProfilePic] = useState(null);
@@ -114,13 +114,13 @@ function Signup_login({ show, onClose }) {
         {profileUrl==null ? (
           <form>
 
-            <input type="text" name="username" placeholder="Username"
+            <input type="text" value={formData?.username} name="username" placeholder="Username"
               onChange={handleChange} required />
 
-            <input type="email" name="email" placeholder="Email"
+            <input type="email" value={formData?.email} name="email" placeholder="Email"
               onChange={handleChange} required />
 
-            <input type="password" name="password" placeholder="Password"
+            <input type="password" value={formData?.password} name="password" placeholder="Password"
               onChange={handleChange} required />
 
             <label className="upload-label">

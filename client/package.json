@@ -24,7 +24,8 @@
     "react-player": "^2.14.0",
     "react-redux": "^9.0.4",
     "react-router-dom": "^6.20.1",
-    "react-spinners": "^0.13.8"
+    "react-spinners": "^0.13.8",
+    "sweetalert2": "^11.26.25"
   },
   "devDependencies": {
     "@types/react": "^18.2.43",

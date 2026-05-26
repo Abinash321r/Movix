@@ -1,14 +1,17 @@
 import mongoose from "mongoose";
 import dotenv from "dotenv";
+import dns from "dns";
 
 dotenv.config();
+dns.setServers(["8.8.8.8", "8.8.4.4", ...dns.getServers()]);
 
 const connectDB = async () => {
   try {
-    await mongoose.connect(process.env.DATABASE_URL,{ family: 4 });
-    console.log("MongoDB Connected Successfully 🚀");
+    //,{ family: 4 }
+    await mongoose.connect(process.env.DATABASE_URL);
+    console.log("MongoDB Atlas Connected");
   } catch (error) {
-    console.error("MongoDB Connection Error ❌", error.message);
+    console.error("MongoDB connection error:", error.message);
     process.exit(1);
   }
 };
