@@ -79,15 +79,23 @@ function Signup_login({ show, onClose }) {
         });
       }
 
-      const result = await res.json();
+     // const result = await res.json();
 
       if (res.ok) {
-        setMessage(isLogin ? "Login Successful!" : "Signup Successful!");
+        const res = await fetch(`${SERVER_URL}/checkcookie`, {
+          method: "GET",
+          credentials: "include",
+        });
 
-        if (result.user?.profilePic) {
-          dispatch(getProfileUrl(result.user.profilePic));
+        const result = await res.json();
+        console.log("Server Response after login signup cookie:", result);
+
+        if (res.ok) {
+          setMessage(isLogin ? "Login Successful!" : "Signup Successful!");
+          if (result?.info?.profilePic) {
+          dispatch(getProfileUrl(result?.info?.profilePic));
         }
-
+        }
         setTimeout(() => {}, 1000);
       } else {
         setMessage(result.message || "Something went wrong");

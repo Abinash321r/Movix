@@ -55,7 +55,7 @@ const alreadyShown = sessionStorage.getItem("cookies_popup_shown");
   Swal.fire({
   icon: "info",
   title: "Cookies Required",
-  text: "Please check third-party cookies to access all features.",
+  text: "Please check and Enable third-party cookies to access all features.\n Some features may not work properly otherwise.",
   confirmButtonText: "OK"
 })
 sessionStorage.setItem("cookies_popup_shown", "true");
