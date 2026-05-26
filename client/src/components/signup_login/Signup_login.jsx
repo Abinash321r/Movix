@@ -95,10 +95,11 @@ function Signup_login({ show, onClose }) {
           if (result?.info?.profilePic) {
           dispatch(getProfileUrl(result?.info?.profilePic));
         }
-        }
-        setTimeout(() => {}, 1000);
+        }else {
+        setMessage("Something went wrong");
+      }
       } else {
-        setMessage(result.message || "Something went wrong");
+        setMessage("Something went wrong");
       }
     } catch (error) {
       console.error(error);
